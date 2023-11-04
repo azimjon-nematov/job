@@ -1,28 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// use App\Http\Controllers\BlogController;
+// use App\Http\Controllers\AboutController;
+// use App\Http\Controllers\ContactController;
+// use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PostController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [IndexController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/post', [PostController::class, 'index']);
+Route::post('/create', [PostController::class, 'create'])->name('job.create');
 
-Route::resource('/post', PostController::class);
+// Route::get('/blog', [BlogController::class, 'blog']);
 
+// Route::get('/about', [AboutController::class, 'about']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/contact', [ContactController::class, 'contact']);
 
-require __DIR__.'/auth.php';
+// Route::get('/category', [CategoryController::class, 'category']);
+
+// Route::post('/create-job', [NewpostController::class, 'create'])->name('job.create');
